@@ -1,19 +1,32 @@
-// Teacher interface
+// -----------------------------
+// Teacher Interface
+// -----------------------------
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any;
+  [key: string]: any; // Allow extra attributes
 }
 
-// Directors interface
+// -----------------------------
+// Director (singular) Interface
+// -----------------------------
+interface Director extends Teacher {
+  numberOfReports: number;
+}
+
+// -----------------------------
+// Directors (plural) Interface
+// -----------------------------
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage
+// -----------------------------
+// Example Director Usage
+// -----------------------------
 const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
@@ -24,39 +37,41 @@ const director1: Directors = {
 
 console.log(director1);
 
-// Function interface
+// -----------------------------
+// Function Interface for printTeacher
+// -----------------------------
 interface printTeacherFunction {
-  (teacher: { firstName: string; lastName: string }): string;
+  (firstName: string, lastName: string): string;
 }
 
-// Correct function using destructured object
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+// -----------------------------
+// printTeacher Function
+// -----------------------------
+const printTeacher: printTeacherFunction = function (firstName: string, lastName: string): string {
   return `${firstName}. ${lastName}`;
-}
+};
 
-// Example usage
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
+// Example Usage
+console.log(printTeacher("John", "Doe")); // J. Doe
 
-// ---------------------------
-// StudentClass Task
-// Interface for constructor parameters
-interface StudentConstructor {
+// -----------------------------
+// StudentClass Interface
+// -----------------------------
+interface StudentInterface {
   firstName: string;
   lastName: string;
-}
-
-// Interface for the class
-interface StudentInterface {
   workOnHomework(): string;
   displayName(): string;
 }
 
-// StudentClass definition
+// -----------------------------
+// StudentClass Implementation
+// -----------------------------
 class StudentClass implements StudentInterface {
   firstName: string;
   lastName: string;
 
-  constructor({ firstName, lastName }: StudentConstructor) {
+  constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
@@ -71,6 +86,6 @@ class StudentClass implements StudentInterface {
 }
 
 // Example usage
-const student = new StudentClass({ firstName: "Alice", lastName: "Smith" });
+const student = new StudentClass("Alice", "Smith");
 console.log(student.displayName()); // Alice
 console.log(student.workOnHomework()); // Currently working
