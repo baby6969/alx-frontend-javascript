@@ -43,13 +43,13 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function definition as expected by ALX
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
+// Function definition with destructured parameters
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+  return `${firstName[0]}. ${lastName}`;
 }
 
 // Example usage
-console.log(printTeacher("John", "Doe"));  // J. Doe
-console.log(printTeacher("Jane", "Smith")); // J. Smith
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
+
 
 
