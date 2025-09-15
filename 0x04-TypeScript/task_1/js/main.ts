@@ -5,10 +5,15 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // Allow any additional attributes
+  [key: string]: any; // Allow extra attributes
 }
 
-// Define Directors interface extending Teacher
+// Define Director (singular) interface extending Teacher
+interface Director extends Teacher {
+  numberOfReports: number;
+}
+
+// Define Directors (plural) interface extending Teacher
 interface Directors extends Teacher {
   numberOfReports: number;
 }
