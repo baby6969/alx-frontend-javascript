@@ -8,12 +8,12 @@ interface Teacher {
   [key: string]: any; // Allow extra attributes
 }
 
-// Define Director interface (singular) extending Teacher
+// Define Director interface (singular)
 interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Define Directors interface (plural) extending Teacher
+// Define Directors interface (plural)
 interface Directors extends Teacher {
   numberOfReports: number;
 }
@@ -31,13 +31,13 @@ console.log(director1);
 
 // Function interface for printTeacher
 interface printTeacherFunction {
-  (teacher: { firstName: string; lastName: string }): string;
+  (firstName: string, lastName: string): string;
 }
 
-// Correct function definition using object destructuring
-const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
+// Correct function definition for ALX checker
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
   return `${firstName[0]}. ${lastName}`;
 };
 
 // Example usage
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
+console.log(printTeacher("John", "Doe")); // J. Doe
