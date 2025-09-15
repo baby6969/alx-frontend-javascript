@@ -43,12 +43,13 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Correct function style that ALX expects
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
+// Function definition as expected by ALX
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName}. ${lastName}`;
 }
 
 // Example usage
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
-console.log(printTeacher({ firstName: "Jane", lastName: "Smith" })); // J. Smith
+console.log(printTeacher("John", "Doe"));  // J. Doe
+console.log(printTeacher("Jane", "Smith")); // J. Smith
+
 
