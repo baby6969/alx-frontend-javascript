@@ -40,16 +40,17 @@ interface Teacher {
 
 // Function interface
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: { firstName: string; lastName: string }): string;
 }
 
-// Function definition with destructured parameters
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+// Correct function definition
+const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
   return `${firstName[0]}. ${lastName}`;
-}
+};
 
 // Example usage
 console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
+
 
 
 
