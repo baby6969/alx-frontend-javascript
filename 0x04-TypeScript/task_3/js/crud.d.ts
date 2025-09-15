@@ -1,9 +1,10 @@
-/// <reference path=./interface.ts />
+/// <reference path="./interface.ts" />
 
-import { RowID, RowElement } from ./interface;
+// Use the imported types
+type RowElement = import("./interface").RowElement;
+type RowID = import("./interface").RowID;
 
-// Declare the ambient module for CRUD operations
-export declare function insertRow(row: RowElement): RowID;
-export declare function deleteRow(rowId: RowID): void;
-export declare function updateRow(rowId: RowID, row: RowElement): RowID;
-
+// Ambient function declarations
+declare function insertRow(row: RowElement): number;
+declare function deleteRow(rowId: RowID): void;
+declare function updateRow(rowId: RowID, row: RowElement): number;
