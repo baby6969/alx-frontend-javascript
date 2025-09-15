@@ -5,20 +5,15 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // Allow extra attributes
+  [key: string]: any;
 }
 
-// Director interface (singular)
-interface Director extends Teacher {
-  numberOfReports: number;
-}
-
-// Directors interface (plural)
+// Directors interface
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage of Directors
+// Example usage
 const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
@@ -29,15 +24,15 @@ const director1: Directors = {
 
 console.log(director1);
 
-// Function interface for printTeacher
+// Function interface
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: { firstName: string; lastName: string }): string;
 }
 
-// ALX requires a regular function, NOT an arrow function
-function printTeacher(firstName: string, lastName: string): string {
+// Correct function using destructured object
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
   return `${firstName[0]}. ${lastName}`;
 }
 
 // Example usage
-console.log(printTeacher("John", "Doe")); // J. Doe
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
