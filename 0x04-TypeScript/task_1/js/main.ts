@@ -11,21 +11,14 @@ interface Teacher {
 }
 
 // -----------------------------
-// Director (singular) Interface
-// -----------------------------
-interface Director extends Teacher {
-  numberOfReports: number;
-}
-
-// -----------------------------
-// Directors (plural) Interface
+// Directors Interface
 // -----------------------------
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
 // -----------------------------
-// Example Director Usage
+// Example Director
 // -----------------------------
 const director1: Directors = {
   firstName: 'John',
@@ -38,7 +31,7 @@ const director1: Directors = {
 console.log(director1);
 
 // -----------------------------
-// Function Interface for printTeacher
+// Function Interface
 // -----------------------------
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
@@ -47,27 +40,16 @@ interface printTeacherFunction {
 // -----------------------------
 // printTeacher Function
 // -----------------------------
-const printTeacher: printTeacherFunction = function (firstName: string, lastName: string): string {
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName}. ${lastName}`;
-};
+}
 
-// Example Usage
 console.log(printTeacher("John", "Doe")); // J. Doe
 
 // -----------------------------
-// StudentClass Interface
+// StudentClass
 // -----------------------------
-interface StudentInterface {
-  firstName: string;
-  lastName: string;
-  workOnHomework(): string;
-  displayName(): string;
-}
-
-// -----------------------------
-// StudentClass Implementation
-// -----------------------------
-class StudentClass implements StudentInterface {
+class StudentClass {
   firstName: string;
   lastName: string;
 
