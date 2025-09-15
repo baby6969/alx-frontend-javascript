@@ -8,17 +8,17 @@ interface Teacher {
   [key: string]: any; // Allow extra attributes
 }
 
-// Define Director (singular) interface extending Teacher
+// Define Director interface (singular) extending Teacher
 interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Define Directors (plural) interface extending Teacher
+// Define Directors interface (plural) extending Teacher
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage
+// Example usage of Directors
 const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
@@ -28,28 +28,16 @@ const director1: Directors = {
 };
 
 console.log(director1);
-// Teacher interface (already defined from previous tasks)
-interface Teacher {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
-  location: string;
-  [key: string]: any; // Allow extra attributes
-}
 
-// Function interface
+// Function interface for printTeacher
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: { firstName: string; lastName: string }): string;
 }
 
-// Correct function definition
-function printTeacher(firstName: string, lastName: string): string {
+// Correct function definition using object destructuring
+const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
   return `${firstName[0]}. ${lastName}`;
-}
+};
 
 // Example usage
-console.log(printTeacher("John", "Doe")); // J. Doe
-
-
-
+console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // J. Doe
