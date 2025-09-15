@@ -1,4 +1,4 @@
-// Define Teacher interface
+// Teacher interface
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -8,12 +8,12 @@ interface Teacher {
   [key: string]: any; // Allow extra attributes
 }
 
-// Define Director interface (singular)
+// Director interface (singular)
 interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Define Directors interface (plural)
+// Directors interface (plural)
 interface Directors extends Teacher {
   numberOfReports: number;
 }
@@ -34,10 +34,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Correct function definition for ALX checker
-const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+// ALX requires a regular function, NOT an arrow function
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName[0]}. ${lastName}`;
-};
+}
 
 // Example usage
 console.log(printTeacher("John", "Doe")); // J. Doe
